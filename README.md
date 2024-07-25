@@ -140,6 +140,9 @@ python egocvr_retrieval.py --evaluation global --model blip --modalities visual-
 ### Citation
 ```bibtex
 @article{hummel2024egocvr,
-  TBA
+  title={EgoCVR: An Egocentric Benchmark for Fine-Grained Composed Video Retrieval},
+  author={Thomas Hummel and Shyamgopal Karthik and Mariana-Iuliana Georgescu and Zeynep Akata},
+  journal={European Conference on Computer Vision (ECCV)},
+  year={2024}
 }
 ```
