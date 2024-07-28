@@ -2,7 +2,7 @@
 
 __Authors__: Thomas Hummel*, Shyamgopal Karthik*, Mariana-Iuliana Georgescu, Zeynep Akata
 
-[![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](TBA)
+[![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2407.16658)
 
 
 ### Abstract
@@ -78,10 +78,10 @@ unzip egocvr_clips_256.zip -d data/
 
 #### Pre-computed Model Embeddings
 We provide also the pre-computed model embeddings for the EgoCVR benchmark to download.
-- EgoVLPv2 Embeddings: [Download](TBA)
-- LanguageBind Embeddings: [Download](TBA)
-- BLIP Embeddings: [Download](TBA)
-- CLIP Embeddings: [Download](TBA)
+- EgoVLPv2 Embeddings: [Download](https://drive.google.com/file/d/1Zsvor7kB8ALzhV7XMs7uJQQg5I9VuiOW/view?usp=sharing)
+- LanguageBind Embeddings: [Download](https://drive.google.com/file/d/1pjbWyyYdHZRg9ba94cDAiBV8R1E33n0J/view?usp=sharing)
+- BLIP Embeddings: [Download](https://drive.google.com/file/d/12weRY-FPs2eIxKHkv9b3RhOOOaLX2Sfi/view?usp=share_link)
+- CLIP Embeddings: [Download](https://drive.google.com/file/d/1y-pW9ur8rGOb-Cgq-kSARID3_hqviIwu/view?usp=sharing)
 
 After downloading, please extract the zip file and place the model embeddings to the ```embeddings/``` directory.
 ```bash

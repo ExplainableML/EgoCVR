@@ -111,23 +111,23 @@ config = {
         "embedding_path": f"{EMBEDDING_DIR}/EgoCVR_blip-large.csv",
         "ckpt_path_finetuned": "./checkpoints/webvid-covr.ckpt",
         "ckpt_path_notfinetuned": "https://storage.googleapis.com/sfr-vision-language-research/BLIP/models/model_large_retrieval_coco.pth",
-        "video_folder": f"{VIDEO_DIR}/clips_nooverlap_fullscale",
+        "video_folder": f"{VIDEO_DIR}/egocvr_clips",
     },
     "egovlpv2": {
         "annotations": f"{ROOT_DIR}/annotation/egocvr/egocvr_annotations_gallery.csv",
         "embedding_path": f"{EMBEDDING_DIR}/EgoCVR_EgoVLPv2.csv",
         "ckpt_path": "./checkpoints/EgoVLPv2.pth",
-        "video_folder": "/mnt/download/ego4d_filtered/clips_nooverlap_fullscale_256",
+        "video_folder": f"{VIDEO_DIR}/egocvr_clips_256",
     },
     "clip": {
         "annotations": f"{ROOT_DIR}/annotation/egocvr/egocvr_annotations_gallery.csv",
         "embedding_path": f"{EMBEDDING_DIR}/EgoCVR_ViT-L-14_datacomp_xl_s13b_b90k.csv",
-        "video_folder": f"{VIDEO_DIR}/clips_nooverlap_fullscale",
+        "video_folder": f"{VIDEO_DIR}/egocvr_clips",
     },
     "languagebind": {
         "annotations": f"{ROOT_DIR}/annotation/egocvr/egocvr_annotations_gallery.csv",
         "embedding_path": f"{EMBEDDING_DIR}/EgoCVR_LanguageBind.csv",
-        "video_folder": f"{VIDEO_DIR}/clips_nooverlap_fullscale",
+        "video_folder": f"{VIDEO_DIR}/egocvr_clips",
     },
 }
 
