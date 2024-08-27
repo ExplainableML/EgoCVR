@@ -1,10 +1,11 @@
+import os
 from pathlib import Path
 import importlib
 
 import torch
 import torch.nn.functional as F
 
-from utils import FrameLoader, pre_caption
+from model.utils import FrameLoader, pre_caption
 
 TEXT_MAX_WORDS = 30
 
@@ -318,8 +319,8 @@ def forward_clip_visual(model, ref_img):
 
 
 def init_EgoVLPv2(checkpoint_path, device="cuda", no_temporal=False, small_proj=False):
-    from src.model.egovlpv2.model import FrozenInTime
-    from src.model.egovlpv2.video_utils import FrameLoader as EgoFrameLoader
+    from model.egovlpv2.model import FrozenInTime
+    from model.egovlpv2.video_utils import FrameLoader as EgoFrameLoader
     import transformers
 
     video_params = {
@@ -379,11 +380,13 @@ class SimpleEgoVLPDataset(torch.utils.data.Dataset):
 
 
 def init_BLIP(checkpoint_path, query_frame_method, num_query_frames, device="cuda"):
-    from src.model.blip_cir import blip_cir, BLIPCir
-    from src.data.transforms import transform_test
+    from model.blip.model import blip_cir, BLIPCir
+    from model.blip.transforms import transform_test
+
+    config_path = os.path.join(os.path.dirname(__file__), "blip", "med_config.json")
 
     model = BLIPCir(
-        med_config="./configs/med_config.json",
+        med_config=config_path,
         image_size=384,
         vit="large",
         vit_grad_ckpt=True,
