@@ -58,7 +58,7 @@ Please follow the instructions below for downloading the gallery information.
 
 ### 2. Downloading the EgoCVR Gallery Information
 The gallery information for the EgoCVR benchmark is stored in ```annotation/egocvr/egocvr_annotations_gallery.csv```. The gallery information can be downloaded from the following link:
-- EgoCVR Gallery Information: [Download](https://drive.google.com/file/d/1JInKIJP22VgXjO1uNWUrV9SK6I2-43QA/view?usp=share_link)
+- EgoCVR Gallery Information: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_annotations_gallery.csv)
 
 
 ### 3. Downloading the EgoCVR Videos or Pre-computed Model Embeddings
@@ -67,8 +67,8 @@ The gallery information for the EgoCVR benchmark is stored in ```annotation/egoc
 
 We provide the video clips from the EgoCVR benchmark to download. We provide the clips in original full scale and downscaled to with the short side 256px. For all models we use the full scale video clips as input except for EgoVLPv2, for which we follow the model recommendations of downscaling first ([more information](https://github.com/facebookresearch/EgoVLPv2/blob/main/EgoVLPv2/README.md)).
 
-- Full scale video clips: [Download](https://drive.google.com/file/d/15izxkJHGGeue9nFPxJjuIbKZoYH2MqMA/view?usp=share_link) 
-- Downscaled video clips: [Download](https://drive.google.com/file/d/15-v6nBVYJ5LA1HpHXvzdQS72awqkFM7L/view?usp=share_link)
+- Full scale video clips: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_clips.zip) 
+- Downscaled video clips: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_clips_256.zip)
 
 After downloading, please extract the zip file and place the video clips to the ```data/``` directory.
 ```bash
@@ -78,10 +78,10 @@ unzip egocvr_clips_256.zip -d data/
 
 #### Pre-computed Model Embeddings
 We provide also the pre-computed model embeddings for the EgoCVR benchmark to download.
-- EgoVLPv2 Embeddings: [Download](https://drive.google.com/file/d/1Zsvor7kB8ALzhV7XMs7uJQQg5I9VuiOW/view?usp=sharing)
-- LanguageBind Embeddings: [Download](https://drive.google.com/file/d/1pjbWyyYdHZRg9ba94cDAiBV8R1E33n0J/view?usp=sharing)
-- BLIP Embeddings: [Download](https://drive.google.com/file/d/12weRY-FPs2eIxKHkv9b3RhOOOaLX2Sfi/view?usp=share_link)
-- CLIP Embeddings: [Download](https://drive.google.com/file/d/1y-pW9ur8rGOb-Cgq-kSARID3_hqviIwu/view?usp=sharing)
+- EgoVLPv2 Embeddings: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_embeddings_egovlpv2.zip)
+- LanguageBind Embeddings: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_embeddings_languagebind.zip)
+- BLIP Embeddings: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_embeddings_blip.zip)
+- CLIP Embeddings: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_embeddings_clip.zip)
 
 After downloading, please extract the zip file and place the model embeddings to the ```embeddings/``` directory.
 ```bash
