@@ -50,40 +50,57 @@ Please follow the instructions below for downloading the gallery information.
 ## Setup
 1. Install the required packages
 2. Download the EgoCVR gallery information
-3. Download either the EgoCVR videos or the pre-computed model embeddings
-4. Download the model weights
+3. Extract the EgoCVR videos from Ego4D
+4. Download the pre-computed model embeddings
+5. Download the model weights
 
 ### 1. Installing Required Packages
 > Instructions coming soon.
 
 ### 2. Downloading the EgoCVR Gallery Information
 The gallery information for the EgoCVR benchmark is stored in ```annotation/egocvr/egocvr_annotations_gallery.csv```. The gallery information can be downloaded from the following link:
-- EgoCVR Gallery Information: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_annotations_gallery.csv)
+- EgoCVR Gallery Information: [Download](https://drive.google.com/file/d/1JInKIJP22VgXjO1uNWUrV9SK6I2-43QA/view?usp=share_link)
 
+### 3. Download and Extract the EgoCVR Videos from Ego4D
 
-### 3. Downloading the EgoCVR Videos or Pre-computed Model Embeddings
+#### 3.1 Request Ego4D access
 
-#### EgoCVR Videos
+EgoCVR video clips are sourced and extracted from the [Ego4D](https://ego4d-data.org) dataset. In order to extract EgoCVR, you need to have access for the Ego4D dataset, which you can request here: https://ego4d.dev/request/ego4d (access is usually granted within 48h)
 
-We provide the video clips from the EgoCVR benchmark to download. We provide the clips in original full scale and downscaled to with the short side 256px. For all models we use the full scale video clips as input except for EgoVLPv2, for which we follow the model recommendations of downscaling first ([more information](https://github.com/facebookresearch/EgoVLPv2/blob/main/EgoVLPv2/README.md)).
+#### 3.2 Install the ego4d client
 
-- Full scale video clips: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_clips.zip) 
-- Downscaled video clips: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_clips_256.zip)
-
-After downloading, please extract the zip file and place the video clips to the ```data/``` directory.
 ```bash
-unzip egocvr_clips.zip -d data/
-unzip egocvr_clips_256.zip -d data/
+pip install ego4d
 ```
 
-#### Pre-computed Model Embeddings
+#### 3.3 Download and Extract EgoCVR
+
+The following script downloads all necessary long-form Ego4D videos and extracts the EgoCVR dataset video clips from them.
+
+```bash
+python egocvr_download_and_extract.py --csv annotation/egocvr/egocvr_data.csv --output egocvr_clips/ --videos ego4d_videos/ --yes
+```
+
+This requires around 800GB of free storage to download all necessary long-form videos at once. If storage is an issue, you can split the data in `annotation/egocvr/egocvr_data.csv` and process the dataset in chunks.
+
+The extracted full-scale EgoCVR clips require around 100GB of storage. Download and extraction can be performed in less than 24h on a modern laptop with SSD storage.
+
+#### (Optional 3.4) Downscale to 256px
+
+For all models we use the full scale video clips as input except for EgoVLPv2, for which we follow the model recommendations of downscaling first ([more information](https://github.com/facebookresearch/EgoVLPv2/blob/main/EgoVLPv2/README.md)).
+
+The downscaled video clips should be placed in `egocvr_clips_256/`.
+
+### 4. Downloading the Pre-computed Model Embeddings
+
 We provide also the pre-computed model embeddings for the EgoCVR benchmark to download.
-- EgoVLPv2 Embeddings: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_embeddings_egovlpv2.zip)
-- LanguageBind Embeddings: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_embeddings_languagebind.zip)
-- BLIP Embeddings: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_embeddings_blip.zip)
-- CLIP Embeddings: [Download](https://mlcloud.uni-tuebingen.de:7443/eccvdatasets/egocvr/egocvr_embeddings_clip.zip)
+- EgoVLPv2 Embeddings: [Download](https://drive.google.com/file/d/1Zsvor7kB8ALzhV7XMs7uJQQg5I9VuiOW/view?usp=share_link)
+- LanguageBind Embeddings: [Download](https://drive.google.com/file/d/1pjbWyyYdHZRg9ba94cDAiBV8R1E33n0J/view?usp=share_link)
+- BLIP Embeddings: [Download](https://drive.google.com/file/d/12weRY-FPs2eIxKHkv9b3RhOOOaLX2Sfi/view?usp=share_link)
+- CLIP Embeddings: [Download](https://drive.google.com/file/d/1y-pW9ur8rGOb-Cgq-kSARID3_hqviIwu/view?usp=share_link)
 
 After downloading, please extract the zip file and place the model embeddings to the ```embeddings/``` directory.
+
 ```bash
 unzip egocvr_embeddings_egovlpv2.zip -d embeddings/
 ```
@@ -95,15 +112,17 @@ unzip egocvr_embeddings_egovlpv2.zip -d embeddings/
 
 The model weights should be placed in the ```checkpoints/``` directory.
 
-
 ## Evaluation
+
 To evaluate different methods on the EgoCVR benchmark, please run the following command:
+
 ```bash
 # Evaluation in the global setting
 python egocvr_retrieval.py --evaluation global
 # Evaluation in the local setting
 python egocvr_retrieval.py --evaluation local
 ```
+
 You can specify the model and the modalities to evaluate by using the following arguments:
 - ```--model```: The model to evaluate. Possible values are ```egovlpv2```, ```languagebind```, ```blip```, and ```clip```.
     - For 2-Stage retrieval, you can use up to two models separated by a space. For example, ```--model languagebind egovlpv2```.
@@ -115,7 +134,9 @@ You can specify the model and the modalities to evaluate by using the following 
     - ```gt```: The ground truth narration from the target video clip.
 
 ### TFR-CVR: Training-Free Re-ranking for Composed Video Retrieval
+
 In the Paper, we propose a simple training-free re-ranking method for Composed Video Retrieval. To evaluate the TFR-CVR and TF-CVR method, please run the following command:
+
 ```bash
 # 2-Stage retrieval in the global setting
 python egocvr_retrieval.py --evaluation global --model languagebind egovlpv2 --modalities visual text --text tfcvr
@@ -125,6 +146,7 @@ python egocvr_retrieval.py --evaluation local --model egovlpv2 --modalities text
 ```
 
 ### Additional Examples
+
 ```bash
 # CLIP
 python egocvr_retrieval.py --evaluation global --model clip --modalities visual-text --text instruction
@@ -136,8 +158,8 @@ python egocvr_retrieval.py --evaluation global --model languagebind --modalities
 python egocvr_retrieval.py --evaluation global --model blip --modalities visual-text --text instruction --fusion crossattn --finetuned
 ```
 
-
 ### Citation
+
 ```bibtex
 @article{hummel2024egocvr,
   title={EgoCVR: An Egocentric Benchmark for Fine-Grained Composed Video Retrieval},

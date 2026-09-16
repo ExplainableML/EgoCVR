@@ -164,5 +164,6 @@ cython_debug/
 cache_dir/
 annotation/egocvr/egocvr_annotations_gallery.csv
 checkpoints/
-data/
 embeddings/
+egocvr_clips/
+ego4d_videos/
